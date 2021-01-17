@@ -333,28 +333,6 @@ conn.sync({ force: true }).then(() => {
       //Assigning a random category to the created product
       producto.addCategory(Math.floor(Math.random() * categories.length + 1));
     });
-    orders.forEach(async (order, i) => {
-      const orden3 = await Order.create(order);
-      //Assigning products to orders!
-      const product1 = await Product.findByPk(1);
-      const product2 = await Product.findByPk(2);
-      await orden3.addProduct(product1, {
-        through: {
-          quantity: Math.floor(Math.random() * 8 + 1),
-          price: 1 * product1.price,
-        },
-      });
-      await orden3.addProduct(product2, {
-        through: {
-          quantity: Math.floor(Math.random() * 8 + 1),
-          price: 1 * product2.price,
-        },
-      });
-      // await orden.addProduct(product2);
-      const user2 = await User.findByPk(7);
-      await orden3.setUser(user2);
-      //orden.update( {userId: user1.id })
-    });
 
     //Charging Users
     users.forEach(async (user, i) => {
