@@ -22,7 +22,7 @@ export default function ConfirmData() {
 
       attr_data_preference.value = data.id; //Le asigna como valor el id que devuelve MP
       //Agrega atributos al elemento script
-      document.querySelector("article").appendChild(script);
+      document.querySelector("#article").appendChild(script);
       script.src =
         "https://www.mercadopago.com.ar/integrations/v1/web-payment-checkout.js";
       script.setAttributeNode(attr_data_preference);
@@ -33,7 +33,7 @@ export default function ConfirmData() {
   if (status === "loading") return <h2>Loading...</h2>;
   if (order) {
     return (
-      <ConData>
+      <ConData id="article">
         <h2>Confirm Shipping Information </h2>
         <div className="data">
           <div className="orderData">
