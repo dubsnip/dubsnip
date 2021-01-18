@@ -23,6 +23,7 @@ export default function ConfirmData() {
       //Agrega atributos al elemento script
       let dataArticle = document.getElementById("article");
       dataArticle = dataArticle.appendChild(script);
+      console.log(dataArticle);
       script.src =
         "https://www.mercadopago.com.ar/integrations/v1/web-payment-checkout.js";
       script.setAttributeNode(attr_data_preference);
