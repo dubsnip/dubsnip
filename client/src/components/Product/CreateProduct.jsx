@@ -12,7 +12,7 @@ const validationSchema = Yup.object({
   name: Yup.string().required("Required"),
   description: Yup.string().required("Required"),
   price: Yup.number().positive(),
-  discount: Yup.number().positive(),
+  discount: Yup.number(),
   stock: Yup.number().min(0).required("Required"),
   picture: Yup.string().required("Required"),
 });
@@ -95,7 +95,9 @@ const AddProduct = () => {
                 placeholder="% of discount..."
               />
             </div>
-            {touched.discount && errors.discount ? <div>{errors.pridiscountce}</div> : null}
+            {touched.discount && errors.discount ? (
+              <div>{errors.pridiscountce}</div>
+            ) : null}
 
             <label>Stock</label>
             <div className="inputConteiner">
