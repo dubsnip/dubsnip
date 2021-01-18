@@ -10,28 +10,29 @@ export default function ConfirmData() {
 
   useEffect(() => {
     (async () => {
-      console.log("entro en useEffect", cart);
-      const script = document.createElement("script"); //Crea un elemento html script
-      const attr_data_preference = document.createAttribute(
-        "data-preference-id"
-      ); //Crea un nodo atribute
-      const { data } = await axios.post("/mercadopago", {
-        cart,
-        orderId: order.id,
-      });
+      if (status !== "loading") {
+        const script = document.createElement("script"); //Crea un elemento html script
+        const attr_data_preference = document.createAttribute(
+          "data-preference-id"
+        ); //Crea un nodo atribute
+        const { data } = await axios.post("/mercadopago", {
+          cart,
+          orderId: order.id,
+        });
 
-      attr_data_preference.value = data.id; //Le asigna como valor el id que devuelve MP
-      //Agrega atributos al elemento script
-      let hola = document.querySelector("#article");
-      hola = hola.appendChild(script);
-      console.log("hola");
-      console.log(hola);
-      script.src =
-        "https://www.mercadopago.com.ar/integrations/v1/web-payment-checkout.js";
-      script.setAttributeNode(attr_data_preference);
-      //Agrega el script como nodo hijo del elemento form
+        attr_data_preference.value = data.id; //Le asigna como valor el id que devuelve MP
+        //Agrega atributos al elemento script
+        let hola = document.getElementById("article");
+        hola = hola.appendChild(script);
+        console.log("hola");
+        console.log(hola);
+        script.src =
+          "https://www.mercadopago.com.ar/integrations/v1/web-payment-checkout.js";
+        script.setAttributeNode(attr_data_preference);
+        //Agrega el script como nodo hijo del elemento form
+      }
     })();
-  }, [cart, order.id]);
+  }, [cart, order.id, status]);
 
   if (status === "loading") return <h2>Loading...</h2>;
   if (order) {
