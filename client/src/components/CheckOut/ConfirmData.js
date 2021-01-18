@@ -22,7 +22,10 @@ export default function ConfirmData() {
 
       attr_data_preference.value = data.id; //Le asigna como valor el id que devuelve MP
       //Agrega atributos al elemento script
-      document.querySelector("#article").appendChild(script);
+      const hola = document.querySelector("#article");
+      hola = hola.appendChild(script);
+      console.log("hola");
+      console.log(hola);
       script.src =
         "https://www.mercadopago.com.ar/integrations/v1/web-payment-checkout.js";
       script.setAttributeNode(attr_data_preference);
