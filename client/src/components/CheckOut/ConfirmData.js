@@ -29,7 +29,7 @@ export default function ConfirmData() {
       script.setAttributeNode(attr_data_preference);
       //Agrega el script como nodo hijo del elemento form
     })();
-  }, [cart, order.id]);
+  }, [cart, order.id, status]);
 
   if (status === "loading") return <h2>Loading...</h2>;
   if (order) {
