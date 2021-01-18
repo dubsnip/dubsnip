@@ -22,7 +22,7 @@ export default function ConfirmData() {
 
       attr_data_preference.value = data.id; //Le asigna como valor el id que devuelve MP
       //Agrega atributos al elemento script
-      const hola = document.querySelector("#article");
+      let hola = document.querySelector("#article");
       hola = hola.appendChild(script);
       console.log("hola");
       console.log(hola);
