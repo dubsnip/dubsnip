@@ -21,16 +21,14 @@ export default function ConfirmData() {
 
       attr_data_preference.value = data.id; //Le asigna como valor el id que devuelve MP
       //Agrega atributos al elemento script
-      let hola = document.getElementById("article");
-      hola = hola.appendChild(script);
-      console.log("hola");
-      console.log(hola);
+      let dataArticle = document.getElementById("article");
+      dataArticle = dataArticle.appendChild(script);
       script.src =
         "https://www.mercadopago.com.ar/integrations/v1/web-payment-checkout.js";
       script.setAttributeNode(attr_data_preference);
       //Agrega el script como nodo hijo del elemento form
     })();
-  }, [cart, order.id, status]);
+  }, [cart, order.id]);
 
   if (status === "loading") return <h2>Loading...</h2>;
   if (order) {
