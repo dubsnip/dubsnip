@@ -49,7 +49,7 @@ const Product = ({ id }) => {
     }
     const average = total / filterRatings.length;
     if (typeof average === "number") return average;
-    else return "This product doesn't have reviews yet"
+    else return "This product doesn't have reviews yet";
   };
 
   return (
@@ -89,7 +89,11 @@ const Product = ({ id }) => {
               >
                 Reviews
               </button>
-              <h4>Average Rating : {ratingAvg()}</h4>
+              <h4>
+                {reviews.length > 0 ? (
+                  <h4>Average Rating : {ratingAvg()}</h4>
+                ) : null}
+              </h4>
             </div>
             <button className="add" onClick={() => handleAdd(product.id)}>
               ADD to the cart
